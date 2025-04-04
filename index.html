@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sara's Birthday Diagnosis</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container py-5">
+    <!-- Header -->
+    <div id="header" class="text-center mb-5">
+      <h1 class="display-4">Unusual Symptoms Detected</h1>
+      <p class="lead">Diagnose This Birthday Case 🩺</p>
+    </div>
+    <!-- Quiz Section -->
+    <div id="quiz-section">
+      <form id="quizForm">
+        <!-- Question 1 -->
+        <div class="mb-4">
+          <h4>1. Patient shows signs of: sudden increased heart rate around puppies. What's your take?</h4>
+          <div class="row">
+            <div class="col-12 col-md-4 mb-2">
+              <button type="button" class="btn btn-block btn-option btn-outline-primary" data-question="q1" data-answer="wrong">Mild fluff fever</button>
+            </div>
+            <div class="col-12 col-md-4 mb-2">
+              <button type="button" class="btn btn-block btn-option btn-outline-primary" data-question="q1" data-answer="wrong">Canine-induced cardio</button>
+            </div>
+            <div class="col-12 col-md-4 mb-2">
+              <button type="button" class="btn btn-block btn-option btn-outline-primary" data-question="q1" data-answer="correct">Standard Sara Syndrome</button>
+            </div>
+          </div>
+        </div>
+        <!-- Question 2 -->
+        <div class="mb-4">
+          <h4>2. Subject begins humming softly when exposed to nostalgic songs. You conclude?</h4>
+          <div class="row">
+            <div class="col-12 col-md-4 mb-2">
+              <button type="button" class="btn btn-block btn-option btn-outline-primary" data-question="q2" data-answer="wrong">Exposure to 00s playlists</button>
+            </div>
+            <div class="col-12 col-md-4 mb-2">
+              <button type="button" class="btn btn-block btn-option btn-outline-primary" data-question="q2" data-answer="correct">Early onset melody memory</button>
+            </div>
+            <div class="col-12 col-md-4 mb-2">
+              <button type="button" class="btn btn-block btn-option btn-outline-primary" data-question="q2" data-answer="wrong">Just another day in the lab</button>
+            </div>
+          </div>
+        </div>
+        <!-- Question 3 -->
+        <div class="mb-4">
+          <h4>3. Subject regularly exhibits kindness, curiosity, and clinical-level intelligence. What's the pathology?</h4>
+          <div class="row">
+            <div class="col-12 col-md-4 mb-2">
+              <button type="button" class="btn btn-block btn-option btn-outline-primary" data-question="q3" data-answer="wrong">Sweetness overload</button>
+            </div>
+            <div class="col-12 col-md-4 mb-2">
+              <button type="button" class="btn btn-block btn-option btn-outline-primary" data-question="q3" data-answer="correct">Birthday brilliance peaking</button>
+            </div>
+            <div class="col-12 col-md-4 mb-2">
+              <button type="button" class="btn btn-block btn-option btn-outline-primary" data-question="q3" data-answer="wrong">Clearly photosynthesizing love and science</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- Wrong Answer Popup -->
+      <div id="wrongAnswerPopup" class="wrong-popup d-none">
+        <div class="popup-content text-center p-3">
+        <p id="wrongMessage"></p>
+        <button id="closeWrongPopup" class="btn btn-secondary mt-2">Try Again</button>
+        </div>
+      </div>
+      <div class="text-center">
+        <button id="diagnoseBtn" class="btn btn-primary" disabled>Diagnose</button>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery and script.js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

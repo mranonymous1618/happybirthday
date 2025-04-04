@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diagnosis Confirmed!</title>
+  <link rel="stylesheet" href="result.css" />
+</head>
+<body>
+  <div class="background-overlay"></div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" src="happybirthday.mp3" autoplay loop></audio>
+
+  <div class="result-container">
+    <div class="typing-container" id="typing-container">
+      <p id="typed-text"></p>
+      <span id="cursor">|</span>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById("typed-text");
+    const cursor = document.getElementById("cursor");
+
+    const messageParts = [
+      { text: "Diagnosis Confirmed!\n", delay: 80, style: "font-size: 2rem; font-weight: bold;" },
+      { text: "You have a rare case of \n", delay: 45, style: "" },
+      { text: "'Sara Syndrome'", delay: 100, style: "color: #ffd700; font-weight: bold; font-size: 1.8rem;" },
+      { text: ": a condition marked by warmth, brilliance,\nand legendary kindness.\n", delay: 40, style: "" },
+      { text: "Happy Birthday, Doc.\n", delay: 100, style: "font-size: 2rem; color: #ffb6c1;" },
+      { text: "You're one of a kind. No cure needed.", delay: 60, style: "font-style: italic;" }
+    ];
+
+    let part = 0;
+    let char = 0;
+
+    function typePart() {
+      if (part < messageParts.length) {
+        const span = document.createElement("span");
+        span.setAttribute("style", messageParts[part].style);
+        container.appendChild(span);
+
+        function typeChar() {
+          if (char < messageParts[part].text.length) {
+            const ch = messageParts[part].text.charAt(char);
+            span.innerHTML += ch === "\n" ? "<br>" : ch;
+            char++;
+            container.appendChild(cursor);
+            setTimeout(typeChar, messageParts[part].delay);
+          } else {
+            char = 0;
+            part++;
+            setTimeout(typePart, 300);
+          }
+        }
+
+        typeChar();
+      } else {
+        cursor.style.display = "none";
+      }
+    }
+
+    window.onload = () => {
+      typePart();
+    };
+  </script>
+</body>
+</html>
