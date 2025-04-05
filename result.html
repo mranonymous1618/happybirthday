@@ -7,10 +7,18 @@
   <link rel="stylesheet" href="result.css" />
 </head>
 <body>
+  <!-- Intro Message Overlay -->
+<div id="volume-prompt">
+  <div class="volume-text">
+    <p>You’ll miss the magic if you can’t hear it.<br> Turn your volume up — trust me.</p>
+    <button id="continue-btn">Okay</button>
+  </div>
+</div>
+
   <div class="background-overlay"></div>
 
   <!-- Background Music -->
-  <audio id="bg-music" src="happybirthday.mp3" autoplay loop></audio>
+  <audio id="bg-music" src="happybirthday.mp3" loop></audio>
 
   <div class="result-container">
     <div class="typing-container" id="typing-container">
@@ -18,29 +26,28 @@
       <span id="cursor">|</span>
     </div>
   </div>
-
   <script>
     const container = document.getElementById("typed-text");
     const cursor = document.getElementById("cursor");
-
+  
     const messageParts = [
       { text: "Diagnosis Confirmed!\n", delay: 80, style: "font-size: 2rem; font-weight: bold;" },
       { text: "You have a rare case of \n", delay: 45, style: "" },
-      { text: "'Sara Syndrome'", delay: 100, style: "color: #ffd700; font-weight: bold; font-size: 1.8rem;" },
+      { text: "'Saranya Syndrome'", delay: 100, style: "color: #ffd700; font-weight: bold; font-size: 1.8rem;" },
       { text: ": a condition marked by warmth, brilliance,\nand legendary kindness.\n", delay: 40, style: "" },
       { text: "Happy Birthday, Doc.\n", delay: 100, style: "font-size: 2rem; color: #ffb6c1;" },
       { text: "You're one of a kind. No cure needed.", delay: 60, style: "font-style: italic;" }
     ];
-
+  
     let part = 0;
     let char = 0;
-
+  
     function typePart() {
       if (part < messageParts.length) {
         const span = document.createElement("span");
         span.setAttribute("style", messageParts[part].style);
         container.appendChild(span);
-
+  
         function typeChar() {
           if (char < messageParts[part].text.length) {
             const ch = messageParts[part].text.charAt(char);
@@ -54,16 +61,28 @@
             setTimeout(typePart, 300);
           }
         }
-
+  
         typeChar();
       } else {
         cursor.style.display = "none";
       }
     }
-
+  
     window.onload = () => {
-      typePart();
+      const prompt = document.getElementById("volume-prompt");
+      const button = document.getElementById("continue-btn");
+  
+      button.addEventListener("click", () => {
+        prompt.style.opacity = "0";
+        setTimeout(() => {
+          prompt.style.display = "none";
+          document.getElementById("bg-music").play();
+          typePart();
+        }, 1000);
+      });
     };
   </script>
+  
+  
 </body>
 </html>
